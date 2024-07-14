@@ -1,24 +1,11 @@
-#include "rclcpp/rclcpp.hpp"
+#include "arcanain_unittest_template/simple_node.hpp"
 
-class SimpleNode : public rclcpp::Node
+SimpleNode::SimpleNode() : Node("simple_node")
 {
-public:
-  SimpleNode() : Node("simple_node")
-  {
-    RCLCPP_INFO(this->get_logger(), "Simple Node has been started.");
-  }
+  RCLCPP_INFO(this->get_logger(), "Simple Node has been started.");
+}
 
-  int add(int a, int b)
-  {
-    return a + b;
-  }
-};
-
-int main(int argc, char **argv)
+int SimpleNode::add(int a, int b)
 {
-  rclcpp::init(argc, argv);
-  auto node = std::make_shared<SimpleNode>();
-  rclcpp::spin(node);
-  rclcpp::shutdown();
-  return 0;
+  return a + b;
 }
